@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Agendamento para Manicure</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <h1>Menu Principal</h1>
+            <a href="#" onclick="showSection('cadastro-profissional')">Cadastro Profissional</a>
+            <a href="#" onclick="showSection('dias-atendimento')">Dias de Atendimento</a>
+            <a href="#" onclick="showSection('horarios')">Horários</a>
+            <a href="#" onclick="showSection('servicos')">Serviços</a>
+            <a href="#" onclick="showSection('tempos')">Tempo de Atendimento</a>
+            <a href="#" onclick="showSection('agendamentos')">Agendamentos</a>
+            <a href="#" onclick="showSection('cadastro-cliente')">Cadastro Cliente</a>
+            <a href="#" onclick="showSection('agendamentos-cliente')">Agendamentos Cliente</a>
+        </div>
+        <div id="cadastro-profissional" class="content">
+            <h1>Cadastro da Profissional</h1>
+            <form id="form-cadastro-profissional">
+                <label for="nome-profissional">Nome</label>
+                <input type="text" id="nome-profissional" name="nome-profissional" required>
+                <label for="telefone-profissional">Telefone</label>
+                <input type="tel" id="telefone-profissional" name="telefone-profissional" required>
+                <label for="email-profissional">Email</label>
+                <input type="email" id="email-profissional" name="email-profissional" required>
+                <button type="submit">Salvar</button>
+            </form>
+        </div>
+        <div id="dias-atendimento" class="content">
+            <h2>Gerenciar Dias de Atendimento</h2>
+            <form>
+                <label for="dias">Dias Disponíveis</label>
+                <input type="date" id="dias" name="dias" required>
+                <button type="button" onclick="saveAvailability()">Salvar</button>
+            </form>
+            <div id="available-dates"></div>
+        </div>
+        <div id="horarios" class="content">
+            <h2>Gerenciar Horários de Atendimento</h2>
+            <form id="form-horarios">
+                <label for="horario-inicio">Horário de Início</label>
+                <input type="time" id="horario-inicio" name="horario-inicio" value="08:00" required>
+                <label for="horario-fim">Horário de Fim</label>
+                <input type="time" id="horario-fim" name="horario-fim" value="18:00" required>
+                <button type="submit">Salvar</button>
+            </form>
+        </div>
+        <div id="servicos" class="content">
+            <h2>Gerenciar Serviços</h2>
+            <form id="form-servicos">
+                <label for="servico">Serviço</label>
+                <input type="text" id="servico" name="servico" required>
+                <button type="submit">Salvar</button>
+            </form>
+        </div>
+        <div id="tempos" class="content">
+            <h2>Gerenciar Tempo de Atendimento</h2>
+            <form id="form-tempos">
+                <label for="tempo">Tempo de Atendimento (minutos)</label>
+                <input type="number" id="tempo" name="tempo" value="60" required>
+                <button type="submit">Salvar</button>
+            </form>
+        </div>
+        <div id="agendamentos" class="content">
+            <h2>Gerenciar Agendamentos</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Serviço</th>
+                        <th>Data</th>
+                        <th>Hora</th>
+                    </tr>
+                </thead>
+                <tbody id="agendamentos-lista">
+                </tbody>
+            </table>
+            <a href="#" class="add-button">Adicionar Novo Agendamento</a>
+        </div>
+        <div id="cadastro-cliente" class="content">
+            <h1>Cadastro do Cliente</h1>
+            <form id="form-cadastro-cliente">
+                <label for="nome-cliente">Nome</label>
+                <input type="text" id="nome-cliente" name="nome-cliente" required>
+                <label for="telefone-cliente">Telefone</label>
+                <input type="tel" id="telefone-cliente" name="telefone-cliente" required>
+                <label for="cod-profissional">Código da Profissional</label>
+                <input type="text" id="cod-profissional" name="cod-profissional" required>
+                <button type="submit">Salvar</button>
+            </form>
+        </div>
+        <div id="agendamentos-cliente" class="content">
+            <h2>Gerenciar Agendamentos Cliente</h2>
+            <div id="horarios-disponiveis"></div>
+            <form id="form-agendamento-cliente">
+                <label for="data-agendamento">Data</label>
+                <input type="date" id="data-agendamento" name="data-agendamento" required>
+                <label for="hora-agendamento">Hora</label>
+                <input type="time" id="hora-agendamento" name="hora-agendamento" required>
+                <button type="submit">Agendar</button>
+            </form>
+            <div id="meus-agendamentos"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
